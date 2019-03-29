@@ -19,6 +19,9 @@ public class MyLinkedList<E>{
   private Node first, last;
   private int size;
 
+  //Constructor
+  public MyLinkedList()
+
   public String toString(){
     String ans =first;
     Node current = first.next();
@@ -28,8 +31,6 @@ public class MyLinkedList<E>{
     }
     return ans;
   }
-  public MyLinkedList()
-  construct an empty list
   public void clear()
   reset the list to an empty state. Very similar to the constructor.
   public boolean/void add(E)
