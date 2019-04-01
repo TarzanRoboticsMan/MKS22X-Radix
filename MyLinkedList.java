@@ -1,12 +1,12 @@
 public class MyLinkedList<E>{
   public class Node{
     //Three fields
-    private Node next; private Integer data;
+    private Node next; private E data;
     //Constructor??
-    public Node(Integer value){
+    public Node(E value){
       data = value;
     }
-    public Node(Integer value, Node newNext){
+    public Node(E value, Node newNext){
       data = value;
       next = newNext;
     }
@@ -16,14 +16,14 @@ public class MyLinkedList<E>{
     public String toString(){return data;}
   }
   //Fields
-  private Node first, last;
-  private int size;
+  public Node first, last;
+  public int size;
 
   //Constructor
-  public MyLinkedList()
+  public MyLinkedList();
 
   public String toString(){
-    String ans =first;
+    String ans = first;
     Node current = first.next();
     while (current!=null){
       ans+=", "+current
@@ -31,14 +31,22 @@ public class MyLinkedList<E>{
     }
     return ans;
   }
-  public void clear()
-  reset the list to an empty state. Very similar to the constructor.
-  public boolean/void add(E)
-  add an element to the end of the list (the boolean would be true all the time if you want to conform to list standards)
-  public void extend(MyLinkedList<E> other)
-  in O(1) time, connect the other list to the end of this list.
-  The other list is then reset to size 0 (do not wipe out the nodes, just disconnect them.)
-  This is how you will merge lists together for your radix sort.
+  public void clear(){
+    first,last = null;
+    size=0;
+  }
+  public boolean add(E data){
+    last.setNext(new Node(data))
+    size++;
+    last=last.next();
+    return true;
+  }
+  public void extend(MyLinkedList<E> other){
+    last.next()=other.first;
+    size+=other.size;
+    last=other.last;
+    other.first=null;other.last=null;other.size=0;
+  }
   public E removeFront()
   remove the 1st element of the list, and return that value.
 }
