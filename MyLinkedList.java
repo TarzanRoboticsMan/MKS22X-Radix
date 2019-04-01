@@ -36,9 +36,15 @@ public class MyLinkedList<E>{
     size=0;
   }
   public boolean add(E data){
-    last.setNext(new Node(data));
-    size++;
-    last=last.next();
+    if(size==0){
+      first = new Node(data);
+      last = first;
+      size++;
+    }else{
+      last.setNext(new Node(data));
+      size++;
+      last=last.next();
+    }
     return true;
   }
   public void extend(MyLinkedList<E> other){
